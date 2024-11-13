@@ -1286,8 +1286,9 @@ GameObject:
   - component: {fileID: 121692238}
   - component: {fileID: 121692239}
   - component: {fileID: 121692240}
+  - component: {fileID: 121692241}
   m_Layer: 0
-  m_Name: characters_23
+  m_Name: player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1377,7 +1378,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.8
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1443,6 +1444,29 @@ MonoBehaviour:
   isGrounded: 0
   groundCheckLeft: {fileID: 1502168103}
   groundCheckRight: {fileID: 810412393}
+  animator: {fileID: 121692241}
+  spriteRenderer: {fileID: 121692236}
+--- !u!95 &121692241
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121692235}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 806f85770fce741eab4b7fdef5b9c956, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &331334484
 GameObject:
   m_ObjectHideFlags: 0

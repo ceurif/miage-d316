@@ -18,16 +18,37 @@ public class PlayerMovement : MonoBehaviour
   private Vector3 velocity = Vector3.zero;
   private float horizontalMovement;
 
+  public Animator animator;
+  public SpriteRenderer spriteRenderer;
+
   void Update() {
     isGrounded = Physics2D.OverlapArea (groundCheckLeft.position, groundCheckRight.position);
     horizontalMovement = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
-    if (Input.GetButtonDown("Jump") && isGrounded)  {
+    if (Input.GetKey(KeyCode.RightShift)) {
+      horizontalMovement *= 2;
+    }
+
+    if ((Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.UpArrow)) && isGrounded)  {
       isJumping = true;
     }
+
+    // Animation de la vitesse
+      float characterVelocity = Mathf.Abs(rb.velocity.x);
+      animator.SetFloat("speed", characterVelocity);
+
+      // Détection de la direction pour retourner le joueur
+      if (horizontalMovement > 0) {
+          spriteRenderer.flipX = false; // Face vers la droite
+      } else if (horizontalMovement < 0) {
+          spriteRenderer.flipX = true;  // Face vers la gauche
+      }
+
   }
 
   void FixedUpdate() {
       MovePlayer(horizontalMovement);
+      float characterVelocity = Mathf.Abs(rb.velocity.x);
+      animator.SetFloat("speed", characterVelocity);
   }
 
   void MovePlayer(float _horizontalMovement) {
